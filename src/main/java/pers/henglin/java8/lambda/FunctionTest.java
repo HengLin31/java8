@@ -11,7 +11,7 @@ import java.util.function.Function;
 public class FunctionTest {
 
     @Test
-    public void sss(){
+    public void testFunction(){
         Identification.initByDefaultData().forEach(identification ->
                 System.out.println(getName(identification, (name) ->
                         "[ " + name + " ]" )));
