@@ -1,6 +1,8 @@
 package pers.henglin.java8.thread;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 import java.util.concurrent.*;
@@ -9,6 +11,7 @@ import java.util.concurrent.*;
  * Created by linheng on 21/10/2019.
  */
 public class CompletableFutureTest {
+    private static Logger logger = LoggerFactory.getLogger(CompletableFutureTest.class);
 
     @Test
     public void testCompletableFuture(){
@@ -17,7 +20,7 @@ public class CompletableFutureTest {
 
         ExecutorService threadPool = Executors.newFixedThreadPool(threadPoolSize);
 
-        System.out.println("start...");
+        logger.info("start...");
 
         for(int count=0; count<threadSize; count++){
             runTask(threadPool);
@@ -31,7 +34,7 @@ public class CompletableFutureTest {
 
         threadPool.shutdown();
 
-        System.out.println("finish.");
+        logger.info("finish.");
     }
 
     private void runTask(ExecutorService threadPool){

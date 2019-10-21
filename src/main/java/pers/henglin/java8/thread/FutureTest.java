@@ -1,6 +1,8 @@
 package pers.henglin.java8.thread;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.concurrent.*;
  * Created by linheng on 21/10/2019.
  */
 public class FutureTest {
+    private static Logger logger = LoggerFactory.getLogger(FutureTest.class);
 
     @Test
     public void testFuture(){
@@ -24,11 +27,11 @@ public class FutureTest {
             results.add(threadPool.submit(initTask()));
         }
 
-        System.out.println("start...");
+        logger.info("start...");
 
         results.forEach(result -> {
             try {
-                System.out.println(result.get());
+                logger.info(result.get().toString());
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
@@ -36,7 +39,7 @@ public class FutureTest {
 
         threadPool.shutdown();
 
-        System.out.println("finish.");
+        logger.info("finish.");
     }
 
     private Callable<Integer> initTask(){
@@ -53,6 +56,6 @@ public class FutureTest {
         StringBuffer info = new StringBuffer();
         info.append(type).append(" - thread: ").append(id)
                 .append(", num: ").append(num);
-        System.out.println(info.toString());
+        logger.info(info.toString());
     }
 }
