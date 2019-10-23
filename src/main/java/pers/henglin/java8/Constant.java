@@ -5,4 +5,5 @@ package pers.henglin.java8;
  */
 public class Constant {
     public static final String DEFAULT_IDENTIFICATION_FILE_PATH = "src/test/resources/identification.json";
+    public static final String DEFAULT_IDENTIFICATION_CLAZZ_PATH = "pers.henglin.java8.Identification";
 }

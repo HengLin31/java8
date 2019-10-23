@@ -34,6 +34,7 @@ public class FutureTest {
                 logger.info(result.get().toString());
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
+                logger.warn(e.getMessage(), e);
             }
         });
 

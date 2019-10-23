@@ -3,6 +3,9 @@ package pers.henglin.java8;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import pers.henglin.java8.annotation.Exec;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +19,8 @@ import java.util.Objects;
  * Created by linheng on 2019/10/20.
  */
 public class Identification {
+    private static Logger logger = LoggerFactory.getLogger(Identification.class);
+
     private static final Type IDENTIFICATION_TYPE = new TypeToken<List<Identification>>() {}.getType();
 
     private String id;
@@ -25,6 +30,13 @@ public class Identification {
     public static List<Identification> initByDefaultData(){
         return initByPath(Constant.DEFAULT_IDENTIFICATION_FILE_PATH);
     }
+    @Exec
+    public void printInitData(){
+        for(Identification identification:Identification.initByDefaultData()){
+            logger.info(identification.toString());
+        }
+    }
+
 
     public static List<Identification> initByPath(String filePath){
         List<Identification> identifications = Collections.emptyList();

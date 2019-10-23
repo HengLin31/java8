@@ -30,6 +30,7 @@ public class CompletableFutureTest {
             TimeUnit.SECONDS.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
+            logger.warn(e.getMessage(), e);
         }
 
         threadPool.shutdown();
@@ -46,6 +47,7 @@ public class CompletableFutureTest {
                 FutureTest.printInfo("end", Thread.currentThread().getId(), num);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                logger.warn(e.getMessage(), e);
             }
         }, threadPool).whenComplete((result, throwable) -> {
             FutureTest.printInfo("finish", Thread.currentThread().getId(), 0);
